@@ -81,7 +81,7 @@ class _IncompleteTodoScreenState extends State<IncompleteTodoScreen> {
                 color: Colors.transparent,
                 width: size.width / 3,
                 child: const Text(
-                  "complete",
+                  "incomplete",
                   style: TextStyle(
                     fontSize: 18,
                   ),

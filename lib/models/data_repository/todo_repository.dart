@@ -1,18 +1,24 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:todo_app/models/objects/todo.dart';
 import 'package:todo_app/services/datasource/database.dart';
 
 class TodoRepository {
   Future<List<Todo>> getAllTodo() async {
-    final results = await SQLiteDbProvider.instance.get("Todo");
-    print("DOneaa - $results");
-    List<Todo> list = results.isNotEmpty
-        ? results.map((json) => Todo.fromJson(json)).toList()
-        : [];
+    List<Todo> list;
+    if (!kIsWeb) {
+      final results = await SQLiteDbProvider.instance.get("Todo");
+      print("DOneaa - $results");
+      list = results.isNotEmpty
+          ? results.map((json) => Todo.fromJson(json)).toList()
+          : [];
+    }
 
     return list;
   }
 
-  Future<List<Todo>> getCompleteTodo(bool status) async {
+  Future<List<Todo>> getTodoByStatus(bool status) async {
     final results =
         await SQLiteDbProvider.instance.getWithParam("Todo", "status", status);
     print("DOneaa - $results");

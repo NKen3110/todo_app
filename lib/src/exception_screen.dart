@@ -9,7 +9,7 @@ class ExceptionScreen extends StatelessWidget {
   Widget _buildButton(BuildContext context) {
     String title = "Home";
     VoidCallback handleNavigator =
-        () => Navigator.popUntil(context, ModalRoute.withName(root));
+        () => Navigator.popUntil(context, ModalRoute.withName(mainTabs));
 
     if (args['errorCode'] != null && args['errorCode'] == '404') {
       title = "Create Task";

@@ -13,5 +13,9 @@ const kDarkCrownRedColor = Color.fromRGBO(113, 59, 57, 1);
 const kGray90Color = Color.fromRGBO(210, 210, 210, 0.9);
 const kDarkGrayColor = Color.fromRGBO(31, 31, 31, 1);
 const kDarkSystemColor = Color.fromRGBO(48, 48, 48, 1);
+const kWarningColor = Color(0xFFF3BB1C);
+const kPurple1Color = Color(0xff7C7B9B);
 
 enum StatusTask { complete, incomplete }
+
+enum TypeDialog { info, warning, error }

@@ -45,7 +45,7 @@ class TodoBloc extends BaseBloc<List<Todo>> {
   Future fetchCompleteTodo() async {
     baseSink.add(ApiResponse.loading(''));
     try {
-      List<Todo> list = await _todoRepository.getCompleteTodo(true);
+      List<Todo> list = await _todoRepository.getTodoByStatus(true);
       baseSink.add(ApiResponse.completed(list));
     } catch (ex) {
       final args = ex.toString().split("-");
@@ -60,7 +60,7 @@ class TodoBloc extends BaseBloc<List<Todo>> {
   Future fetchIncompleteTodo() async {
     baseSink.add(ApiResponse.loading(''));
     try {
-      List<Todo> list = await _todoRepository.getCompleteTodo(false);
+      List<Todo> list = await _todoRepository.getTodoByStatus(false);
       baseSink.add(ApiResponse.completed(list));
     } catch (ex) {
       final args = ex.toString().split("-");
@@ -77,6 +77,7 @@ class TodoBloc extends BaseBloc<List<Todo>> {
     try {
       int results = await _todoRepository.createTask(name, statusTask);
       print("add Successs - $results");
+      await Future.delayed(const Duration(milliseconds: 600));
       List<Todo> list = [];
       baseSink.add(ApiResponse.completed(list));
     } catch (ex) {

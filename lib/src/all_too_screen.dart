@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/blocs/todo_bloc.dart';
+import 'package:todo_app/components/simple_dialog.dart';
 import 'package:todo_app/models/objects/todo.dart';
 import 'package:todo_app/navigator/router.dart';
 import 'package:todo_app/services/api_response.dart';
@@ -37,12 +38,19 @@ class _AllTodoScreenState extends State<AllTodoScreen> {
           setState(() => lstTodo.addAll(snapshot.data));
           break;
         case Status.ERROR:
-          widget.navigator(exceptionScreen,
-              args: {
-                "message": snapshot.message,
-                "errorCode": snapshot.errorCode
-              },
-              onDone: (value) => todoBloc.fetchAllTodo());
+          if (snapshot.errorCode != null && snapshot.errorCode == "404") {
+            CustomSimpleDialog.showSimpleDialog(context,
+                content: snapshot.message,
+                type: TypeDialog.error,
+                onDone: () => {});
+          } else {
+            widget.navigator(exceptionScreen,
+                args: {
+                  "message": snapshot.message,
+                  "errorCode": snapshot.errorCode
+                },
+                onDone: (value) => todoBloc.fetchAllTodo());
+          }
           break;
       }
     });

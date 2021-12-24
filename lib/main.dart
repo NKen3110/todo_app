@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/navigator/router.dart';
-import 'package:todo_app/src/main_tabs.dart';
+import 'package:todo_app/src/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainTabs(),
+      home: const SplashScreen(),
       onGenerateRoute: getRoute,
     );
   }

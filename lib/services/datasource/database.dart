@@ -41,9 +41,9 @@ class SQLiteDbProvider {
 
     if (results.isNotEmpty) {
       return results;
+    } else {
+      throw FetchDataException('Data is null. Please create new task - 404');
     }
-    // throw FetchDataException('Data is null - 404');
-    return [];
   }
 
   Future<List<Map<String, Object>>> getWithParam(

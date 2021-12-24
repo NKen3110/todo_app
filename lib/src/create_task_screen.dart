@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/blocs/todo_bloc.dart';
 import 'package:todo_app/components/custom_app_bar..dart';
+import 'package:todo_app/components/custom_loading.dart';
 import 'package:todo_app/components/input_form_field.dart';
 import 'package:todo_app/navigator/router.dart';
 import 'package:todo_app/services/api_response.dart';
@@ -18,6 +19,7 @@ class CreateTaskScreen extends StatefulWidget {
 class _CreateTaskScreenState extends State<CreateTaskScreen> {
   final _saveFormKey = GlobalKey<FormState>();
   final _regisNameController = TextEditingController();
+  final GlobalKey<State> _keyLoader = GlobalKey<State>();
   AutovalidateMode _regisNameValidateMode = AutovalidateMode.disabled;
 
   StatusTask _statusTask = StatusTask.incomplete;
@@ -35,12 +37,14 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
     todoBloc.baseStream.listen((snapshot) {
       switch (snapshot.status) {
         case Status.LOADING:
+          CustomLoading.showLoadingDialog(context, _keyLoader);
           break;
         case Status.COMPLETED:
-          Navigator.pushNamed(context, root);
+          CustomLoading.hideLoadingDialog(_keyLoader);
+          Navigator.pushNamed(context, mainTabs);
           break;
         case Status.ERROR:
-          // CustomLoading.hideLoadingDialog(_keyLoader);
+          CustomLoading.hideLoadingDialog(_keyLoader);
           Navigator.pushNamed(context, exceptionScreen, arguments: {
             "message": snapshot.message,
           });
@@ -112,36 +116,42 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                 ),
-                ListTile(
-                  title: const Text(
-                    'Complete',
-                  ),
-                  leading: Radio<StatusTask>(
-                    // fillColor: MaterialStateProperty.resolveWith(
-                    //     (states) => Colors.white70),
-                    value: StatusTask.complete,
-                    groupValue: _statusTask,
-                    onChanged: (StatusTask value) {
-                      setState(() {
-                        _statusTask = value;
-                      });
-                    },
+                SizedBox(
+                  width: size.width * 0.8,
+                  child: ListTile(
+                    title: const Text(
+                      'Complete',
+                    ),
+                    leading: Radio<StatusTask>(
+                      // fillColor: MaterialStateProperty.resolveWith(
+                      //     (states) => Colors.white70),
+                      value: StatusTask.complete,
+                      groupValue: _statusTask,
+                      onChanged: (StatusTask value) {
+                        setState(() {
+                          _statusTask = value;
+                        });
+                      },
+                    ),
                   ),
                 ),
-                ListTile(
-                  title: const Text(
-                    'Incomplete',
-                  ),
-                  leading: Radio<StatusTask>(
-                    // fillColor: MaterialStateProperty.resolveWith(
-                    //     (states) => Colors.white70),
-                    value: StatusTask.incomplete,
-                    groupValue: _statusTask,
-                    onChanged: (StatusTask value) {
-                      setState(() {
-                        _statusTask = value;
-                      });
-                    },
+                SizedBox(
+                  width: size.width * 0.8,
+                  child: ListTile(
+                    title: const Text(
+                      'Incomplete',
+                    ),
+                    leading: Radio<StatusTask>(
+                      // fillColor: MaterialStateProperty.resolveWith(
+                      //     (states) => Colors.white70),
+                      value: StatusTask.incomplete,
+                      groupValue: _statusTask,
+                      onChanged: (StatusTask value) {
+                        setState(() {
+                          _statusTask = value;
+                        });
+                      },
+                    ),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -156,9 +166,16 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
                             _statusTask == StatusTask.complete ? true : false);
                       }
                     },
-                    child: const Text(
-                      "Save",
-                      style: TextStyle(fontSize: 17),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(Icons.save_alt_rounded),
+                        SizedBox(width: 10),
+                        Text(
+                          "Save",
+                          style: TextStyle(fontSize: 17),
+                        ),
+                      ],
                     ),
                     style: ElevatedButton.styleFrom(primary: kLightBlue1Color),
                   ),
