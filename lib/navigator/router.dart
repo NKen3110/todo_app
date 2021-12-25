@@ -39,8 +39,16 @@ Route<dynamic> getRoute(RouteSettings settings,
       }
       return _buildRoute(settings, builder);
     case mainTabs:
+      var pageTransitionType = PageTransitionType.fade;
+      int duration = 1500;
+      if (settings.arguments != null) {
+        Map<String, dynamic> args = settings.arguments;
+        pageTransitionType = args['pageTransitionType'];
+        if (pageTransitionType != null) duration = 400;
+      }
       Widget builder = const MainTabs();
-      return _buildRouteWithTransition(settings, builder);
+      return _buildRouteWithTransition(settings, builder,
+          type: pageTransitionType, duration: duration);
     case createTaskScreen:
       return _buildRoute(
           settings,

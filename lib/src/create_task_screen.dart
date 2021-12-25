@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:todo_app/blocs/todo_bloc.dart';
 import 'package:todo_app/components/custom_app_bar..dart';
 import 'package:todo_app/components/custom_loading.dart';
@@ -42,7 +43,9 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
           break;
         case Status.COMPLETED:
           CustomLoading.hideLoadingDialog(_keyLoader);
-          Navigator.pushNamed(context, mainTabs);
+          Navigator.pushNamed(context, mainTabs, arguments: {
+            "pageTransitionType": PageTransitionType.leftToRight
+          });
           break;
         case Status.ERROR:
           CustomLoading.hideLoadingDialog(_keyLoader);
