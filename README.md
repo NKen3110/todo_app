@@ -17,18 +17,36 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Installation
 
+Clone source code from GitHub (https://github.com/NKen3110/todo_app.git)
+
+In terminal direct to todo_app (cd root/todo_app) and run below three commands to config app
+
+- flutter clean
+- flutter packages get
+- flutter packages upgrade
+
+Buiding for Web:
+
+- Getting and saving data using mock model
+
+Buiding for device:
+
+- Getting and saving data using Sqlite local database
 
 ## Unit Testing
 
 All files for testing:
+
 - main_tabs_screen_test.dart
 - create_new_task_test.dart
 - task_name_validator_test.dart
 
 Testing with VSCode:
+
 - Open one in testing files file
 - Select the Run menu
 - Click the Start Debugging option
 
 Run tests in a terminal
+
 - flutter test test/files.dart
