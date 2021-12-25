@@ -33,9 +33,9 @@ class TodoBloc extends BaseBloc<List<Todo>> {
       List<Todo> list = await _todoRepository.getAllTodo();
       baseSink.add(ApiResponse.completed(list));
     } catch (ex) {
-      final args = ex.toString().split("-");
+      final args = ex.toString().split("- code:");
       if (args.length > 1) {
-        baseSink.add(ApiResponse.error(args[0], errorCode: args[1].trim()));
+        baseSink.add(ApiResponse.error(args[0], errorCode: args.last.trim()));
       } else {
         baseSink.add(ApiResponse.error(ex.toString()));
       }
@@ -48,9 +48,9 @@ class TodoBloc extends BaseBloc<List<Todo>> {
       List<Todo> list = await _todoRepository.getTodoByStatus(true);
       baseSink.add(ApiResponse.completed(list));
     } catch (ex) {
-      final args = ex.toString().split("-");
+      final args = ex.toString().split("- code:");
       if (args.length > 1) {
-        baseSink.add(ApiResponse.error(args[0], errorCode: args[1].trim()));
+        baseSink.add(ApiResponse.error(args[0], errorCode: args.last.trim()));
       } else {
         baseSink.add(ApiResponse.error(ex.toString()));
       }
@@ -63,9 +63,9 @@ class TodoBloc extends BaseBloc<List<Todo>> {
       List<Todo> list = await _todoRepository.getTodoByStatus(false);
       baseSink.add(ApiResponse.completed(list));
     } catch (ex) {
-      final args = ex.toString().split("-");
+      final args = ex.toString().split("- code:");
       if (args.length > 1) {
-        baseSink.add(ApiResponse.error(args[0], errorCode: args[1].trim()));
+        baseSink.add(ApiResponse.error(args[0], errorCode: args.last.trim()));
       } else {
         baseSink.add(ApiResponse.error(ex.toString()));
       }
@@ -81,9 +81,9 @@ class TodoBloc extends BaseBloc<List<Todo>> {
       List<Todo> list = [];
       baseSink.add(ApiResponse.completed(list));
     } catch (ex) {
-      final args = ex.toString().split("-");
+      final args = ex.toString().split("- code:");
       if (args.length > 1) {
-        baseSink.add(ApiResponse.error(args[0], errorCode: args[1].trim()));
+        baseSink.add(ApiResponse.error(args[0], errorCode: args.last.trim()));
       } else {
         baseSink.add(ApiResponse.error(ex.toString()));
       }
@@ -97,7 +97,7 @@ class TodoBloc extends BaseBloc<List<Todo>> {
       print("update successs - $results");
       initData();
     } catch (ex) {
-      final args = ex.toString().split("-");
+      final args = ex.toString().split("- code:");
       if (args.length > 1) {
         baseSink.add(ApiResponse.error(args[0], errorCode: args[1].trim()));
       } else {
@@ -113,9 +113,9 @@ class TodoBloc extends BaseBloc<List<Todo>> {
       print("delete successs - $results");
       initData();
     } catch (ex) {
-      final args = ex.toString().split("-");
+      final args = ex.toString().split("- code:");
       if (args.length > 1) {
-        baseSink.add(ApiResponse.error(args[0], errorCode: args[1].trim()));
+        baseSink.add(ApiResponse.error(args[0], errorCode: args.last.trim()));
       } else {
         baseSink.add(ApiResponse.error(ex.toString()));
       }

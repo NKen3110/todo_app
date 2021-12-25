@@ -6,6 +6,7 @@ import 'package:todo_app/components/input_form_field.dart';
 import 'package:todo_app/navigator/router.dart';
 import 'package:todo_app/services/api_response.dart';
 import 'package:todo_app/utils/constant.dart';
+import 'package:todo_app/utils/helper.dart';
 
 class CreateTaskScreen extends StatefulWidget {
   final String title;
@@ -97,9 +98,7 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
                   fillColor: Colors.white,
                   // cursorColor: Colors.white70,
                   prefixIcon: const Icon(Icons.task, color: kLightBlue1Color),
-                  validator: (value) => value == null || value.trim() == ""
-                      ? "Task name is required"
-                      : null,
+                  validator: (value) => TaskNameFieldValidator.validate(value),
                   boxShadow: [boxShadow],
                   onChanged: (value) {
                     setState(() {

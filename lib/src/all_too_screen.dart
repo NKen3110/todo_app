@@ -4,6 +4,7 @@ import 'package:todo_app/components/simple_dialog.dart';
 import 'package:todo_app/models/objects/todo.dart';
 import 'package:todo_app/navigator/router.dart';
 import 'package:todo_app/services/api_response.dart';
+import 'package:todo_app/src/create_task_screen.dart';
 import 'package:todo_app/utils/constant.dart';
 
 class AllTodoScreen extends StatefulWidget {
@@ -11,7 +12,8 @@ class AllTodoScreen extends StatefulWidget {
   final void Function(String,
       {Map<String, dynamic> args, void Function(Object) onDone}) navigator;
 
-  const AllTodoScreen({Key key, this.title, this.navigator}) : super(key: key);
+  const AllTodoScreen({Key key, this.title = "", this.navigator})
+      : super(key: key);
 
   @override
   _AllTodoScreenState createState() => _AllTodoScreenState();
@@ -119,6 +121,8 @@ class _AllTodoScreenState extends State<AllTodoScreen> {
         IconButton(
           icon: const Icon(Icons.add_circle),
           onPressed: () => {
+            // Navigator.of(context, rootNavigator: true)
+            //     .pushNamed(createTaskScreen),
             widget.navigator(createTaskScreen, onDone: (value) {}),
           },
         ),

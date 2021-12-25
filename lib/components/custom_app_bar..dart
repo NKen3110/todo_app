@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/navigator/router.dart';
+import 'package:todo_app/utils/helper.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
@@ -31,7 +32,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     Widget leading = Container();
     List<Widget> actions = [];
     Widget centerWidget = Text(
-      title,
+      checkStringEmpty(title) ? "" : title,
       style: TextStyle(
         color: textColor,
       ),
