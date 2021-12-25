@@ -25,11 +25,11 @@ In terminal direct to todo_app (cd root/todo_app) and run below three commands t
 - flutter packages get
 - flutter packages upgrade
 
-Buiding for Web:
+Running on Web:
 
 - Getting and saving data using mock model
 
-Buiding for device:
+Running on device:
 
 - Getting and saving data using Sqlite local database
 
