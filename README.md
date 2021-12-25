@@ -27,11 +27,11 @@ In terminal direct to todo_app (cd root/todo_app) and run below three commands t
 
 Running on Web:
 
-- Getting and saving data using mock model
+- Getting and saving data by using mock model
 
 Running on device:
 
-- Getting and saving data using Sqlite local database
+- Getting and saving data by using Sqlite local database
 
 ## Unit Testing
 
