@@ -19,8 +19,8 @@ class TodoRepository {
   }
 
   Future<List<Todo>> getTodoByStatus(bool status) async {
-    final results =
-        await SQLiteDbProvider.instance.getWithParam("Todo", "status", status);
+    final results = await SQLiteDbProvider.instance
+        .getWithParam("Todo", "status", status ? '1' : '0');
     print("DOneaa - $results");
     List<Todo> list = results.isNotEmpty
         ? results.map((json) => Todo.fromJson(json)).toList()

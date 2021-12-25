@@ -86,7 +86,7 @@ class _SplashScreen extends State<SplashScreen> with TickerProviderStateMixin {
             }
           });
 
-    _positionAnimation = Tween<double>(begin: 0.0, end: size.width * 0.68)
+    _positionAnimation = Tween<double>(begin: 0.0, end: size.width * 0.60)
         .animate(_positionController)
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {

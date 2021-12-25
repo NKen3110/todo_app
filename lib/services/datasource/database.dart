@@ -56,7 +56,10 @@ class SQLiteDbProvider {
     if (results.isNotEmpty) {
       return results;
     }
-    // throw FetchDataException('Data is null - 404');
+    // else {
+    //   throw FetchDataException(
+    //       'Data is null. Please create new task - code:404');
+    // }
     return [];
   }
 

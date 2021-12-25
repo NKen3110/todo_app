@@ -27,7 +27,7 @@ class Todo {
   Map<String, dynamic> toJson() => {
         TodoFields.id: id,
         TodoFields.name: name,
-        TodoFields.status: status ? 1 : 0,
+        TodoFields.status: status ? '1' : '0',
         TodoFields.createdDate: createdDate.toIso8601String(),
       };
 }
