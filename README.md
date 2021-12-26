@@ -34,7 +34,7 @@ If flutter is below version 2.8, please:
 - Open AndroidManifest.xml file in todo_app/android/app/src/main/ and change:
   * <application
     android:name="${applicationName}" --> android:name="io.flutter.app.FlutterApplication"
-    ...
+    ...<br/>
 - Change build.gradle in todo_app/android/app:
   * android {<br />
     >compileSdkVersion (flutter.compileSdkVersion --> 31)<br />
