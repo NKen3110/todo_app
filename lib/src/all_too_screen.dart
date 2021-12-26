@@ -87,8 +87,8 @@ class _AllTodoScreenState extends State<AllTodoScreen> {
                 width: size.width / 3,
                 child: Text(
                   lstTodo[index].status
-                      ? StatusTask.complete.name
-                      : StatusTask.incomplete.name,
+                      ? StatusTask.complete.toString().split('.').last
+                      : StatusTask.incomplete.toString().split('.').last,
                   style: const TextStyle(
                     fontSize: 18,
                   ),

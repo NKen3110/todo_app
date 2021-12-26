@@ -19,11 +19,37 @@ samples, guidance on mobile development, and a full API reference.
 
 Clone source code from GitHub (https://github.com/NKen3110/todo_app.git)
 
-In terminal direct to todo_app (cd root/todo_app) and run below three commands to config app
+- Recommended run project with flutter version ^2.0 (tested on 2.5.3 and 2.8.0)
+
+In terminal direct to todo_app (cd root/todo_app) and run below commands to config app
 
 - flutter clean
 - flutter packages get
-- flutter packages upgrade
+- flutter packages upgrade (option)
+
+## Config for Android
+
+If flutter is below version 2.8, please:
+
+- Open AndroidManifest.xml file in todo_app/android/app/src/main/ and change:
+  <application
+    android:name="${applicationName}" --> android:name="io.flutter.app.FlutterApplication"
+    ...
+  > ...</<application>
+- Change build.gradle in todo_app/android/app:
+  android {
+    compileSdkVersion (flutter.compileSdkVersion --> 31)
+    ...
+    defaultConfig {
+        ...
+        minSdkVersion (flutter.minSdkVersion --> 21)
+        targetSdkVersion (flutter.targetSdkVersion --> 31)
+        ...
+    }
+    ...
+  }
+
+## Building and Running
 
 Running on Web:
 
