@@ -32,12 +32,12 @@ In terminal direct to todo_app (cd root/todo_app) and run below commands to conf
 If flutter is below version 2.8, please:
 
 - Open AndroidManifest.xml file in todo_app/android/app/src/main/ and change:
-  <application
+  * <application
     android:name="${applicationName}" --> android:name="io.flutter.app.FlutterApplication"
     ...
   > ...</<application>
 - Change build.gradle in todo_app/android/app:
-  android {
+  * android {
     compileSdkVersion (flutter.compileSdkVersion --> 31)
     ...
     defaultConfig {
