@@ -35,18 +35,17 @@ If flutter is below version 2.8, please:
   * <application
     android:name="${applicationName}" --> android:name="io.flutter.app.FlutterApplication"
     ...
-  > ...</application>
 - Change build.gradle in todo_app/android/app:
   * android {<br />
-        compileSdkVersion (flutter.compileSdkVersion --> 31)<br />
-        ...<br />
-        defaultConfig {<br />
-            ...<br />
-            minSdkVersion (flutter.minSdkVersion --> 21)<br />
-            targetSdkVersion (flutter.targetSdkVersion --> 31)<br />
-            ...<br />
-        }<br />
-        ...<br />
+    >compileSdkVersion (flutter.compileSdkVersion --> 31)<br />
+    >...<br />
+    >defaultConfig {<br />
+    >>...<br />
+    >>minSdkVersion (flutter.minSdkVersion --> 21)<br />
+    >>targetSdkVersion (flutter.targetSdkVersion --> 31)<br />
+    >>...<br />
+    >}<br />
+    >...<br />
     }
 
 ## Building and Running
