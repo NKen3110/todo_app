@@ -33,6 +33,9 @@ Running on device:
 
 - Getting and saving data by using Sqlite local database
 
+
+## UI Giude
+Please read UI_Guide.pdf file in same project director
 ## Unit Testing
 
 All files for testing:

@@ -114,7 +114,7 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
                 SizedBox(
                   width: size.width * 0.8,
                   child: const Text(
-                    "Status Task: ",
+                    "Task Status: ",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                 ),
